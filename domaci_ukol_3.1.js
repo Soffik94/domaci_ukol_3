@@ -9,7 +9,7 @@ const dtoIn = {
 const gender = ["male", "female"];
 const workload = [10, 20, 30, 40, 50];
 
-let surnames = [
+const surnames = [
     "Daněk",
     "Daniel",
     "Danihel",
@@ -62,7 +62,7 @@ let surnames = [
     "Drbohlav",
 ];
 
-let names = [
+const names = [
     "Abadon",
     "Abdon",
     "Ábel",
@@ -119,8 +119,8 @@ const main = (dtoIn) => {
     const minAge = dtoIn.age.min;
     const maxAge = dtoIn.age.max;
     const getRandomDate = (minAge, maxAge) => {
-        let now = new Date();
-        let minDate = new Date(
+        const now = new Date();
+        const minDate = new Date(
             now.getFullYear() - maxAge - 1,
             now.getMonth(),
             now.getDate() + 1,
@@ -129,7 +129,7 @@ const main = (dtoIn) => {
             0,
             0
         );
-        let maxDate = new Date(
+        const maxDate = new Date(
             now.getFullYear() - minAge,
             now.getMonth(),
             now.getDate(),
@@ -138,7 +138,7 @@ const main = (dtoIn) => {
             0,
             0
         );
-        let randomDate =
+        const randomDate =
             minDate.getTime() +
             Math.random() * (maxDate.getTime() - minDate.getTime());
         let date = new Date(randomDate);
@@ -148,9 +148,9 @@ const main = (dtoIn) => {
     };
 
     let dtoOut = [];
-    let count = dtoIn.count;
+    let counter = dtoIn.count;
 
-    while (count > 0) {
+    while (counter > 0) {
         const randomName = names[Math.floor(Math.random() * names.length)];
         const randomSurname = surnames[Math.floor(Math.random() * surnames.length)];
 
@@ -162,11 +162,8 @@ const main = (dtoIn) => {
             workload: workload[Math.floor(Math.random() * workload.length)],
         });
 
-        count -= 1;
+        counter -= 1;
     }
 
     return dtoOut;
 };
-
-const result = main(dtoIn);
-console.log(result);
